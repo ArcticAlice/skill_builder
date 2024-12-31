@@ -1,0 +1,9 @@
+body {
+    background-color: #e6f9fc;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0; 
+  }

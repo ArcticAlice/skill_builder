@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-import SkillCircles from "./SkillCircles";
+import React from "react";
 
-function ImageAdding() {
-  const [imageUrl, setImageUrl] = useState(""); // Shared state for the image URL
-
+function SkillAdder({ onImageUpload }) {
+  
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const url = URL.createObjectURL(file); // Convert file to URL
-      setImageUrl(url); // Update the state
+      const url = URL.createObjectURL(file);
+      onImageUpload(url); // Pass the uploaded image URL to the parent
     }
   };
 
@@ -21,6 +19,9 @@ function ImageAdding() {
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
+    position: "absolute",
+    top: "105%",
+    left: "105%",
   };
 
   const handleUploadClick = () => {
@@ -28,9 +29,7 @@ function ImageAdding() {
   };
 
   return (
-    <div>
-      <div onClick={handleUploadClick} style={imageUploaderStyle}>
-      </div>
+    <div onClick={handleUploadClick} style={imageUploaderStyle}>
       <input
         id="file-input"
         type="file"
@@ -38,11 +37,8 @@ function ImageAdding() {
         style={{ display: "none" }}
         onChange={handleFileChange}
       />
-
-      {/* Example SkillCircles */}
-      <SkillCircles x="59.2%" y="23%" imageUrl={imageUrl} />
     </div>
   );
 }
 
-export default ImageAdding;
+export default SkillAdder;

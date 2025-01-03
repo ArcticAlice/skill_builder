@@ -1,29 +1,32 @@
 import Icon from './assets/Icon.svg';
-import calendar from './assets/calendar.svg'
+import calendar from './assets/calendar.svg';
 
-function NavigationBar() {
+function NavigationBar({ changeDisplay }) {
+  const navigationBarStyle = {
+    borderRight: "1px solid black",
+    borderTop: "1px solid black",
+    borderBottom: "1px solid black",
+    borderRadius: "0px 40px 40px 0px",
+    position: "fixed",
+    height: "30vh",
+    width: "8vh",
+    top: "30%",
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    alignItems: "center",
+    justifyItems: "center",
+  };
 
-    const navigationBarStyle = {
-        borderRight: "1px solid black",
-        borderTop: "1px solid black",
-        borderBottom: "1px solid black",
-        borderRadius: "0px 40px 40px 0px",
-        position: "fixed",
-        height: "30vh",
-        width: "8vh",
-        top: "30%",
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        alignItems: "center",
-        justifyItems: "center"
-    }
+  const svgStyle = {
+    cursor: "pointer",
+  };
 
-    return (
-        <div style={navigationBarStyle}>
-            <img src={Icon} alt="icon" />
-            <img src={calendar} alt="icon" />
-        </div>
-    )
+  return (
+    <div style={navigationBarStyle}>
+      <img onClick={() => changeDisplay(true)} style={svgStyle} src={Icon} alt="icon" />
+      <img onClick={() => changeDisplay(false)} style={svgStyle} src={calendar} alt="calendar" />
+    </div>
+  );
 }
 
-export default NavigationBar
+export default NavigationBar;

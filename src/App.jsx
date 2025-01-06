@@ -1,6 +1,6 @@
-import ProfilePage from "./ProfilePage";
-import NavigationBar from "./NavigationBar";
-import Tasks from "./Tasks";
+import ProfilePage from "./Pages/ProfilePage";
+import NavigationBar from "./CentralComponents/NavigationBar";
+import Tasks from "./Pages/TaskPage";
 import React, { useState } from "react";
 import "./index.css";
 

@@ -1,5 +1,5 @@
-import Icon from './assets/Icon.svg';
-import calendar from './assets/calendar.svg';
+import Icon from '../assets/Icon.svg';
+import calendar from '../assets/calendar.svg';
 
 function NavigationBar({ changeDisplay }) {
   const navigationBarStyle = {

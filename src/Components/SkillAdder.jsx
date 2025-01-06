@@ -1,4 +1,5 @@
 import React from "react";
+import Plus from  "../assets/Plus";
 
 function SkillAdder({ onImageUpload }) {
   
@@ -24,12 +25,14 @@ function SkillAdder({ onImageUpload }) {
     left: "105%",
   };
 
+
   const handleUploadClick = () => {
     document.getElementById("file-input").click(); // Trigger file input click
   };
 
   return (
     <div onClick={handleUploadClick} style={imageUploaderStyle}>
+      <Plus height="50px" width="50px"/>
       <input
         id="file-input"
         type="file"

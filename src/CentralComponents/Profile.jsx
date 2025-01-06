@@ -1,21 +1,5 @@
-import profilePicture from './assets/Dio.jpeg';
-
-function DivCircles(props) {
-    const divCircleStyles = {
-        position: "absolute",
-        width: "10px",
-        height: "10px",
-        zIndex: "3",
-        backgroundColor: "#00B4D8",
-        top: props.y,
-        left: props.x,
-        transform: `translate(-50%, -50%)`,
-        border: "1px solid #00B4D8",
-        borderRadius: "50%"
-    };
-
-    return <div style={divCircleStyles}></div>;
-}
+import profilePicture from '../assets/Dio.jpeg';
+import DivCircles from '../Components/DivCircles';
 
 function Profile() {
 
@@ -26,7 +10,7 @@ function Profile() {
         const angle = (2 * Math.PI * index) / circleCount; // Calculate angle for each circle
         const x = 200 + radius * Math.cos(angle); // Adjust x position based on radius and angle
         const y = 200 + radius * Math.sin(angle); // Adjust y position based on radius and angle
-        return <DivCircles key={index} x={`${x}px`} y={`${y}px`} />;
+        return <DivCircles key={index} x={`${x}px`} y={`${y}px`} color={"#00B4D8"} />;
     });
 
     const containerStyle = {

@@ -1,6 +1,12 @@
 import React from "react";
+import Skills from "../CentralComponents/Skills";
 
 function SkillCircles({ x, y, imageUrl }) {
+
+  const skillPage = () => {
+    return (<Skills/>)
+  }
+
   const skillCircleStyles = {
     position: "absolute",
     width: "70px",
@@ -17,7 +23,7 @@ function SkillCircles({ x, y, imageUrl }) {
     cursor: "pointer"
   };
 
-  return <div style={skillCircleStyles}></div>;
+  return <div onClick={skillPage} style={skillCircleStyles}></div>;
 }
 
 export default SkillCircles;

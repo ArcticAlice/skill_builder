@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import SkillCircles from "./SkillCircles";
-import SkillAdder from "./SkillAdder";
-import Profile from "./Profile";
-import ExperienceBar from "./ExperienceBar";
+import SkillCircles from "../Components/SkillCircles";
+import SkillAdder from "../Components/SkillAdder";
+import Profile from "../CentralComponents/Profile";
+import ExperienceBar from "../Components/ExperienceBar";
 
 function ProfilePage() {
   

@@ -2,7 +2,7 @@ body {
     background-color: #e6f9fc;
 }
 
-html, body {
+html, body, div {
     width: 100vw;
     height: 100vh;
     margin: 0; 

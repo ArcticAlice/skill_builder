@@ -1,4 +1,4 @@
-function Plus({ width = "24px", height = "24px", color = "#e6f9fc", stroke = "black", strokeWidth = 25 }) {
+function Plus({ width = "24px", height = "24px", color = "#e6f9fc", stroke = "#ffc8dd", strokeWidth = 25 }) {
     return (
         <svg 
             xmlns="http://www.w3.org/2000/svg" 

@@ -1,5 +1,5 @@
-import Icon from '../assets/Icon.svg';
-import calendar from '../assets/calendar.svg';
+import Icon from '../assets/Icon';
+import Calendar from '../assets/Calendar';
 
 function NavigationBar({ changeDisplay }) {
   const navigationBarStyle = {
@@ -23,8 +23,8 @@ function NavigationBar({ changeDisplay }) {
 
   return (
     <div style={navigationBarStyle}>
-      <img onClick={() => changeDisplay(true)} style={svgStyle} src={Icon} alt="icon" />
-      <img onClick={() => changeDisplay(false)} style={svgStyle} src={calendar} alt="calendar" />
+      <Icon onClick={() => changeDisplay(true)} />
+      <Calendar onClick={() => changeDisplay(false)} />
     </div>
   );
 }

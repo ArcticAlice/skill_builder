@@ -146,7 +146,7 @@ function PopUp({ show, onClose, onSave }) {
         boxSizing: 'border-box',
         border: 'none',
         outline: 'none',
-        color: '#C8B6FF',
+        color: '#bde0fe',
     };
 
 
@@ -232,9 +232,10 @@ function Tasks() {
         setTasks((prevTasks) => [...prevTasks, task]);
     };
 
-    const deleteTask = (task) => {
-        setTasks((t) => [...t.splice(task)]);
-    }
+    const deleteTask = (index) => {
+        setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
+    };
+    
 
     const openPopUp = () => setIsPopUpOpen(true);
     const closePopUp = () => setIsPopUpOpen(false);

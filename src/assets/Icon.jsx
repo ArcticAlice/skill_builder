@@ -1,4 +1,4 @@
-function Icon({ width = "24px", height = "24px", color = "#e6f9fc", stroke = "#ffc8dd", strokeWidth = 25, ...props }) {
+function Icon({ width = "40px", height = "40px", color = "white", stroke = "#750D37", strokeWidth = 25, ...props }) {
 
     const style = {
         cursor: "pointer"

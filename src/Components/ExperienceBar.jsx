@@ -11,9 +11,11 @@ function ExperienceBar({ x, y }) {
         top: y,
     }
 
+    const something = JSON.parse(localStorage.getItem("userExp")) || 0;
+
     return (
         <div style={barStyle}>
-
+            {something}
         </div>
     )
 }

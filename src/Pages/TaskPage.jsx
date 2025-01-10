@@ -20,7 +20,7 @@ function PlusButton({ tap }) {
 
     return (
         <div style={plusStyle} onClick={tap}>
-            <Plus> style={{ cursor: "pointer" }} </Plus>
+            <Plus style={{ cursor: "pointer" }} />
         </div>
     );
 }
@@ -28,7 +28,8 @@ function PlusButton({ tap }) {
 function PopUp({ show, onClose, onSave }) {
 
     const [task, setTask] = useState("");
-    const [selectedColor, setSelectedColor] = useState("#FF0000"); 
+    const [selectedColor, setSelectedColor] = useState("#ffafcc");
+    const [exp, setExp] = useState();
 
     const [circleStyleEasy, setCircleStyleEasy] = useState({
         position: "absolute",
@@ -73,26 +74,36 @@ function PopUp({ show, onClose, onSave }) {
             alert("Task name cannot be empty!");
             return;
         }
-        onSave({ taskName: task, taskColor: selectedColor });
+        onSave({ taskName: task, taskColor: selectedColor, experience: exp });
         setTask("");
-        setSelectedColor("#FF0000");
+        setSelectedColor("#ffafcc");
         onClose();
     };
 
     const handleColorChange = (index, color) => {
-        
-        setCircleStyleEasy((c) => ({...c, backgroundColor: "none"}));
-        setCircleStyleMed((c) => ({...c, backgroundColor: "none"}));
-        setCircleStyleHard((c) => ({...c, backgroundColor: "none"}));
+
+        let easy = false;
+        let med = false;
+        let hard = false;
+
+        setCircleStyleEasy((c) => ({ ...c, backgroundColor: "white" }));
+        setCircleStyleMed((c) => ({ ...c, backgroundColor: "white" }));
+        setCircleStyleHard((c) => ({ ...c, backgroundColor: "white" }));
 
         setSelectedColor(color);
 
-        if(index === 0) {
-            setCircleStyleEasy((c) => ({...c, backgroundColor: color}));
-        }else if(index === 1) {
-            setCircleStyleMed((c) => ({...c, backgroundColor: color}));
-        }else {
-            setCircleStyleHard((c) => ({...c, backgroundColor: color}));
+        if (index === 0 && med === false && hard === false) {
+            setCircleStyleEasy((c) => ({ ...c, backgroundColor: color }));
+            easy = true;
+            setExp(100);
+        } else if (index === 1 && easy === false && hard === false) {
+            setCircleStyleMed((c) => ({ ...c, backgroundColor: color }));
+            med = true;
+            setExp(250);
+        } else {
+            setCircleStyleHard((c) => ({ ...c, backgroundColor: color }));
+            hard = true;
+            setExp(500);
         }
     };
 
@@ -111,6 +122,7 @@ function PopUp({ show, onClose, onSave }) {
         display: 'flex',
         flexDirection: 'column',
         boxSizing: 'border-box',
+        border: "1px solid black"
     };
 
     const closeButtonStyle = {
@@ -182,15 +194,15 @@ function PopUp({ show, onClose, onSave }) {
     );
 }
 
-
-function TaskTemplate({ taskName, taskColor, complete }) {
+function TaskTemplate({ taskName, taskColor, complete, experience }) {
 
     const completeButton = {
         border: "1px solid black",
         width: "15px",
         height: "15px",
-        display: "inline-block"
-    }
+        display: "inline-block",
+        cursor: "pointer",
+    };
 
     const taskTemplateStyle = {
         position: "relative",
@@ -202,40 +214,60 @@ function TaskTemplate({ taskName, taskColor, complete }) {
         marginBottom: "10px",
         borderRadius: "5px",
         display: "grid",
-        gridTemplateColumns: "1fr 3fr",
+        gridTemplateColumns: "1fr 15fr",
         alignItems: "center",
-        cursor: "pointer",
-        userSelect: "none",
-        backgroundColor: "#e6f9fc",
+        backgroundColor: "white",
     };
 
     const textStyle = {
         verticalAlign: "center",
         padding: "0",
-        margin: "0"
-    }
+        margin: "0",
+        letterSpacing: "2px",
+        color: "#bde0fe",
+    };
 
     return (
         <div style={taskTemplateStyle}>
-            <div style={completeButton} onClick={complete}/>
-            <h3 style={textStyle}> {taskName} </h3>
+            <div style={completeButton} onClick={complete}></div>
+            <p style={textStyle}>{taskName} </p>
             <DivCircles x="95%" y="50%" color={taskColor} />
         </div>
     );
 }
 
 function Tasks() {
-    const [tasks, setTasks] = useState([]);
+
+    const [tasks, setTasks] = useState(() => {
+        const storedTasks = localStorage.getItem("skillTasks");
+        return storedTasks ? JSON.parse(storedTasks) : [];
+    });
+
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
     const addTask = (task) => {
-        setTasks((prevTasks) => [...prevTasks, task]);
+        setTasks((prevTasks) => {
+            const updatedTasks = [...prevTasks, task];
+            localStorage.setItem("skillTasks", JSON.stringify(updatedTasks));
+            return updatedTasks;
+        });
     };
 
-    const deleteTask = (index) => {
-        setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
-    };
+    const completeTask = (index) => {
+        const addExpfunction = () => {
+            const savedExp = localStorage.getItem("userExp");
+            const current = JSON.parse(savedExp) || 0;
+            localStorage.setItem("userExp", JSON.stringify(current + tasks[index].experience));
+        };
     
+        addExpfunction(); 
+    
+        setTasks((prevTasks) => {
+            const updatedTasks = prevTasks.filter((_, i) => i !== index);
+            localStorage.setItem("skillTasks", JSON.stringify(updatedTasks));
+            return updatedTasks;
+        });
+    };
 
     const openPopUp = () => setIsPopUpOpen(true);
     const closePopUp = () => setIsPopUpOpen(false);
@@ -245,15 +277,15 @@ function Tasks() {
         margin: "0px",
         width: "100vh",
         height: "100vh",
-    }
+    };
 
     const tasksStyle = {
         position: "relative",
         width: "60vh",
         height: "95vh",
         left: "30%",
-        top: "5%"
-    }
+        top: "5%",
+    };
 
     return (
         <div style={taskPageStyle}>
@@ -263,7 +295,8 @@ function Tasks() {
                         key={index}
                         taskName={task.taskName}
                         taskColor={task.taskColor}
-                        complete={deleteTask}
+                        experience={task.experience}
+                        complete={() => completeTask(index)}
                     />
                 ))}
             </div>

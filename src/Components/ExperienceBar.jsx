@@ -1,21 +1,23 @@
+import React, {useState} from "react";
+
 function ExperienceBar({ x, y }) {
+
+    const[expDisplay, setExpDisplay] = useState(JSON.parse(localStorage.getItem("userExp")) || 0)
 
     const barStyle = {
         zIndex: "3",
         width: "400px",
         height: "20px",
-        border: "1px solid black",
+        border: "1px solid #750D37",
         borderRadius: "15px",
         position: "absolute",
         left: x,
         top: y,
     }
 
-    const something = JSON.parse(localStorage.getItem("userExp")) || 0;
-
     return (
         <div style={barStyle}>
-            {something}
+            <p style={{color: "white"}}>{expDisplay}</p>
         </div>
     )
 }

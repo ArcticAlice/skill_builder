@@ -19,7 +19,7 @@ function Profile() {
         width: "400px",
         height: "400px",
         borderRadius: "50%",
-        border: "1px solid black",
+        border: "1px solid #750D37",
         display: "flex",
         top: "50%",
         left: "50%",
@@ -29,7 +29,7 @@ function Profile() {
     const profileStyle = {
         zIndex: "2",
         width: "175px",
-        border: "1.5px solid black",
+        border: "1.5px solid #750D37",
         borderRadius: "50%",
         position: "absolute",
         top: "50%",
@@ -40,7 +40,7 @@ function Profile() {
     const circleStyle = {
         width: "230px",
         height: "230px",
-        border: "1px solid black",
+        border: "1px solid #750D37",
         zIndex: "2",
         borderRadius: "50%",
         position: "absolute",

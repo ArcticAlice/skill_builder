@@ -15,7 +15,7 @@ function SkillAdder({ onImageUpload }) {
     width: "75px",
     height: "75px",
     borderRadius: "25%",
-    border: "1px solid black",
+    border: "1px solid #750D37",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

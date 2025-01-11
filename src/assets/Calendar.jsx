@@ -1,4 +1,4 @@
-function Calendar({ width = "40px", height = "40px", color = "white", stroke = "#750D37", strokeWidth = 25, ...props }) {
+function Calendar({ width = "40px", height = "40px", color = "#00B4D8", stroke = "white", strokeWidth = 1, ...props }) {
     
     const style = {
         cursor: "pointer"

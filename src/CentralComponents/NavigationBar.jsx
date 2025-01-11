@@ -3,9 +3,9 @@ import Calendar from '../assets/Calendar';
 
 function NavigationBar({ changeDisplay }) {
   const navigationBarStyle = {
-    borderRight: "1px solid black",
-    borderTop: "1px solid black",
-    borderBottom: "1px solid black",
+    borderRight: "1px solid #750D37",
+    borderTop: "1px solid #750D37",
+    borderBottom: "1px solid #750D37",
     borderRadius: "0px 40px 40px 0px",
     position: "fixed",
     height: "30vh",

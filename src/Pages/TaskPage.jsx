@@ -29,7 +29,7 @@ function PlusButton({ tap }) {
 function TaskTemplate({ taskName, taskColor, complete, experience }) {
 
     const completeButton = {
-        border: "1px solid #00B4D8",
+        border: `1px solid ${taskColor}`,
         width: "15px",
         height: "15px",
         display: "inline-block",
@@ -42,7 +42,7 @@ function TaskTemplate({ taskName, taskColor, complete, experience }) {
         height: "5vh",
         padding: "5px",
         paddingLeft: "20px",
-        border: "1px solid #750D37",
+        border: "1px solid #00B4D8",
         marginBottom: "10px",
         borderRadius: "5px",
         display: "grid",
@@ -56,7 +56,7 @@ function TaskTemplate({ taskName, taskColor, complete, experience }) {
         padding: "0",
         margin: "0",
         letterSpacing: "2px",
-        color: "white",
+        color: taskColor,
     };
 
     return (

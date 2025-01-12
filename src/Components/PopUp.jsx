@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import X from "../assets/X";
 
 function PopUp({ show, onClose, onSave }) {
     const [task, setTask] = useState("");
@@ -10,7 +11,7 @@ function PopUp({ show, onClose, onSave }) {
         display: "inline-block",
         width: "10px",
         height: "10px",
-        border: "1px solid #48CAE4",
+        border: "1px solid #87C38F",
         borderRadius: "50%",
         cursor: "pointer",
         left: "5%",
@@ -22,7 +23,7 @@ function PopUp({ show, onClose, onSave }) {
         display: "inline-block",
         width: "10px",
         height: "10px",
-        border: "1px solid #00B4D8",
+        border: "1px solid #FBBFCA",
         borderRadius: "50%",
         cursor: "pointer",
         left: "15%",
@@ -34,7 +35,7 @@ function PopUp({ show, onClose, onSave }) {
         display: "inline-block",
         width: "10px",
         height: "10px",
-        border: "1px solid #03045E",
+        border: "1px solid #A663CC",
         borderRadius: "50%",
         cursor: "pointer",
         left: "25%",
@@ -50,26 +51,25 @@ function PopUp({ show, onClose, onSave }) {
         }
         onSave({ taskName: task, taskColor: selectedColor, experience: exp });
         setTask("");
-        setSelectedColor("#ffafcc");
         onClose();
     };
 
     const handleColorChange = (index, color) => {
-        setCircleStyleEasy((c) => ({ ...c, backgroundColor: "white" }));
-        setCircleStyleMed((c) => ({ ...c, backgroundColor: "white" }));
-        setCircleStyleHard((c) => ({ ...c, backgroundColor: "white" }));
+        setCircleStyleEasy((c) => ({ ...c, backgroundColor: "black" }));
+        setCircleStyleMed((c) => ({ ...c, backgroundColor: "black" }));
+        setCircleStyleHard((c) => ({ ...c, backgroundColor: "black" }));
 
         setSelectedColor(color);
 
         if (index === 0) {
             setCircleStyleEasy((c) => ({ ...c, backgroundColor: color }));
-            setExp(100);
+            setExp(5);
         } else if (index === 1) {
             setCircleStyleMed((c) => ({ ...c, backgroundColor: color }));
-            setExp(250);
+            setExp(15);
         } else {
             setCircleStyleHard((c) => ({ ...c, backgroundColor: color }));
-            setExp(500);
+            setExp(50);
         }
     };
 
@@ -91,24 +91,12 @@ function PopUp({ show, onClose, onSave }) {
         border: "1px solid #750D37"
     };
 
-    const closeButtonStyle = {
-        position: "absolute",
-        top: "3%",
-        left: "1%",
-        backgroundColor: "transparent",
-        color: "#bde0fe",
-        border: "none",
-        fontWeight: "900",
-        fontSize: "16px",
-        cursor: "pointer"
-    };
-
     const saveButtonStyle = {
         position: "absolute",
-        top: "76%",
+        top: "75%",
         left: "87%",
-        backgroundColor: "#0077B6",
-        color: "#FFF",
+        backgroundColor: "#00B4D8",
+        color: "white",
         border: "none",
         padding: "8px 12px",
         borderRadius: "4px",
@@ -126,14 +114,12 @@ function PopUp({ show, onClose, onSave }) {
         border: "none",
         outline: "none",
         backgroundColor: "black",
-        color: "#bde0fe"
+        color: "#00B4D8"
     };
 
     return (
         <div style={popUpStyle}>
-            <button style={closeButtonStyle} onClick={onClose}>
-                X
-            </button>
+            <X onClick={onClose}/>
             <textarea
                 style={textareaStyle}
                 placeholder="Enter Task!"
@@ -142,15 +128,15 @@ function PopUp({ show, onClose, onSave }) {
             />
             <div
                 style={circleStyleEasy}
-                onClick={() => handleColorChange(0, "#00B4D8")}
+                onClick={() => handleColorChange(0, "#87C38F")}
             ></div>
             <div
                 style={circleStyleMed}
-                onClick={() => handleColorChange(1, "#00B4D8")}
+                onClick={() => handleColorChange(1, "#FBBFCA")}
             ></div>
             <div
                 style={circleStyleHard}
-                onClick={() => handleColorChange(2, "#03045E")}
+                onClick={() => handleColorChange(2, "#A663CC")}
             ></div>
             <button style={saveButtonStyle} onClick={handleSave}>
                 Save

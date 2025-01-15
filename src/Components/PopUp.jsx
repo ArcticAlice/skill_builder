@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import X from "../assets/X";
 
 function PopUp({ show, onClose, onSave }) {
+
     const [task, setTask] = useState("");
     const [selectedColor, setSelectedColor] = useState("#ffafcc");
     const [exp, setExp] = useState();

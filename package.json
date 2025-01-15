@@ -1,7 +1,7 @@
 {
   "name": "skill_builder",
   "private": true,
-  "homepage": "https://ArcticAlice.github.io/skill_builder",
+  "homepage": "https://ArcticAlice.github.io/skill_builder/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

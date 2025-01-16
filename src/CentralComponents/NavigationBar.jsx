@@ -1,5 +1,5 @@
-import Icon from '../assets/Icon';
-import Calendar from '../assets/Calendar';
+import Icon from '../Assets/Icon';
+import Calendar from '../Assets/Calendar';
 
 function NavigationBar({ changeDisplay }) {
   const navigationBarStyle = {

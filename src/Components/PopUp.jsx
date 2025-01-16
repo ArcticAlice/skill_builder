@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import X from "../assets/X";
+import X from "../Assets/X";
 
 function PopUp({ show, onClose, onSave }) {
 

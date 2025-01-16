@@ -1,4 +1,4 @@
-import profilePicture from '../assets/Dio.jpeg';
+import profilePicture from '../Assets/Dio.jpeg';
 import DivCircles from '../Components/DivCircles';
 
 function Profile() {

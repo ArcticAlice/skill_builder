@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DivCircles from "../Components/DivCircles";
-import Plus from "../assets/Plus";
+import Plus from "../Assets/Plus";
 import PopUp from "../Components/PopUp";
 
 function PlusButton({ tap }) {

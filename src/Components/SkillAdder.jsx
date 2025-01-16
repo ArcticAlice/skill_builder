@@ -1,5 +1,5 @@
 import React from "react";
-import Plus from  "../assets/Plus";
+import Plus from  "../Assets/Plus";
 
 function SkillAdder({ onImageUpload }) {
   
